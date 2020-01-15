@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "249656152067",
+    "firebase_url": "https://emotionapp-9c95e.firebaseio.com",
+    "project_id": "emotionapp-9c95e",
+    "storage_bucket": "emotionapp-9c95e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249656152067:android:e61b0821f4839c05267e36",
+        "android_client_info": {
+          "package_name": "com.wynkapp.emotion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249656152067-f6ijoqvbefjv7l4c5thkrnkjj7sokfpj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHGchNUOJQ3wrvq49KJnnJqUVuNwvMDEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249656152067-f6ijoqvbefjv7l4c5thkrnkjj7sokfpj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "249656152067-61o7ds64o7fu0hn726d3pn71cmq1ovis.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wynkapp.emotion"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

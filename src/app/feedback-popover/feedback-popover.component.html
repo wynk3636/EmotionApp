@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Feedback
+      </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-list>
+  <ion-item>
+    <ion-fab-button size="small" color="{{goodIconColor}}" (click)="good()"> 
+      <ion-icon name="thumbs-up"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small" color="{{badIconColor}}" (click)="bad()"> 
+      <ion-icon name="thumbs-down"></ion-icon>
+    </ion-fab-button>
+  </ion-item>
+  <br>
+  <ion-item>
+      <ion-textarea rows={6} cols={20} placeholder="Enter any notes here." [(ngModel)]="feedbackText"></ion-textarea>
+  </ion-item>
+</ion-list>
+<ion-button expand="block" disabled={{canNotSend}} (click)="sendFeedback()">Send</ion-button><br>
+<ion-button expand="block" color="dark" (click)="dismissPopover()">Close</ion-button>

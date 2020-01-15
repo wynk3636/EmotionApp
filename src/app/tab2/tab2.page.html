@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="presentHelpModal()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Face Emotion</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <input type="file" id="selectFile" accept="image/*" (change)="onChangeInput($event)" hidden />
+      <img class="image" id="imagePhoto" src ="{{shootPhoto}}"/>
+      <!--<canvas id="canvas" class="canvas" height="767" width="1280"></canvas>-->
+    </ion-row>
+    <ion-row>
+      <canvas id="chartImageEmotion" #barCanvas></canvas>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size="small">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="getStoragePhoto()">
+          <ion-icon name="folder"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+</ion-fab>
+
+<div *ngIf ="shootPhoto">
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button size="small">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="shareFacebookImage()">
+          <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="shareInstagramImage()">
+          <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="shareTwitterImage()">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <!--
+      <ion-fab-button (click)="shareOtherImage()">
+        <ion-icon name="list-box"></ion-icon>
+      </ion-fab-button>
+      -->
+    </ion-fab-list> 
+  </ion-fab>
+</div>

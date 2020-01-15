@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FeedbackPopoverComponent } from '../feedback-popover/feedback-popover.component';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(public popoverController: PopoverController) {}
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: FeedbackPopoverComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
 
 }

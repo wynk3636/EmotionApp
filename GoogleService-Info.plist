@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>249656152067-61o7ds64o7fu0hn726d3pn71cmq1ovis.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.249656152067-61o7ds64o7fu0hn726d3pn71cmq1ovis</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDBWvbKAnif_Y4tNr207GvnM3dkJbi2PcE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>249656152067</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.wynkapp.emotion</string>
+	<key>PROJECT_ID</key>
+	<string>emotionapp-9c95e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emotionapp-9c95e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:249656152067:ios:53c539685465089e267e36</string>
+	<key>DATABASE_URL</key>
+	<string>https://emotionapp-9c95e.firebaseio.com</string>
+</dict>
+</plist>

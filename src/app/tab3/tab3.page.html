@@ -1,9 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="presentHelpModal()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Text Emotion</ion-title>
+    <!--
+    <ion-buttons slot="end">
+      <ion-button (click)="useMic()">
+        <ion-icon name="mic"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+  <ion-item>
+      <ion-label position="stacked">Input Area <ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea auto-grow=true placeholder="Enter any notes here." [(ngModel)]="wordInput"></ion-textarea>
+  </ion-item>
+  <ion-item>
+      <ion-label position="stacked">Text Emotion Result</ion-label>
+      <ion-note slot="end">{{wordOutput}}</ion-note>
+      <!--<ion-textarea auto-grow=true readonly=true [(ngModel)]="wordOutput"></ion-textarea>-->
+  </ion-item>
+  <canvas id="chartTextEmotion" #barCanvas></canvas>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size="small" (click)="textAnalyze()">
+      <ion-icon name="podium"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button size="small">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="shareFacebookText()">
+          <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="shareTwitterText()">
+          <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="shareOtherText()">
+          <ion-icon name="list-box"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list> 
+  </ion-fab>
