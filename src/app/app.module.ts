@@ -21,6 +21,8 @@ import { FormsModule }   from '@angular/forms';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
+
 
 @NgModule({
   declarations: [AppComponent,
@@ -48,6 +50,7 @@ import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
     SpeechRecognition,
     GoogleAnalytics,
     FirebaseAnalytics,
+    AdMobFree,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

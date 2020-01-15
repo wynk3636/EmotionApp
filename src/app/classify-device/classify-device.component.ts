@@ -23,5 +23,29 @@ export class ClassifyDeviceComponent implements OnInit {
       return false;
     }
   }
+  isIos(){
+    //console.log(this.platform.platforms())
+    if(this.platform.is("ios")){
+      return true;
+    }
+    else if(this.platform.is("ipad")){
+      return true;
+    }
+    else if(this.platform.is("iphone")){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  isAndroid(){
+    //console.log(this.platform.platforms())
+    if(this.platform.is("android")){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
 }

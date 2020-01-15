@@ -33,7 +33,7 @@ export class Tab2Page {
     }
     else{
       var chartArea=<HTMLCanvasElement>document.getElementById("imagePhoto");
-      chartArea.height=250
+      chartArea.height=200
     }
   }
 
