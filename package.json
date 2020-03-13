@@ -35,6 +35,7 @@
     "cordova-android-firebase-gradle-release": "^4.0.0",
     "cordova-android-play-services-gradle-release": "^4.0.0",
     "cordova-android-support-gradle-release": "^3.0.1",
+    "cordova-ios": "5.1.1",
     "cordova-plugin-admob-free": "^0.27.0",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.0",
@@ -116,7 +117,8 @@
       }
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

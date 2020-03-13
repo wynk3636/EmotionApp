@@ -31,9 +31,13 @@ export class Tab2Page {
       var chartArea=<HTMLCanvasElement>document.getElementById("chartImageEmotion");
       chartArea.height=70
     }
-    else{
+    else if(this.classifyDevice.isAndroid()){
       var chartArea=<HTMLCanvasElement>document.getElementById("imagePhoto");
       chartArea.height=200
+    }
+    else if(this.classifyDevice.isIos()){
+      var chartArea=<HTMLCanvasElement>document.getElementById("imagePhoto");
+      chartArea.height=300
     }
   }
 
@@ -137,9 +141,14 @@ export class Tab2Page {
     });
 
     var data = await response.json();
-    var emotion: number[] = this.pullEmotion(data)
-    this.barChartMethod(emotion);
-    //this.addCanvas(data)
+    if(JSON.stringify(data) === "[]"){
+      alert("Sorry. Can't analyze this photo")
+    }
+    else{
+      var emotion: number[] = this.pullEmotion(data)
+      this.barChartMethod(emotion);
+      //this.addCanvas(data)
+    }
   };
 
   //encode

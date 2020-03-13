@@ -22,20 +22,34 @@ export class Tab1Page {
 
   }
 
+  id:string
+
   ngOnInit() {
+    if(this.classifyDevice.isAndroid()){
+      this.id = 'ca-app-pub-3818394711346045/9686404636'
+    }
+    else if(this.classifyDevice.isIos()){
+      this.id = 'ca-app-pub-3818394711346045~3765548446';
+    }
+    
     const bannerConfig: AdMobFreeBannerConfig = {
-      id: 'ca-app-pub-3818394711346045/9686404636',
-      isTesting: false,
+      //id: this.id,
+      isTesting: true,
       autoShow: true
      };
      this.admobFree.banner.config(bannerConfig);
      
      this.admobFree.banner.prepare()
       .then(() => {
+        //alert("ok")
         // banner Ad is ready
         // if we set autoShow to false, then we will need to call the show method here
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+          console.log("admobError" + e);
+          //alert("no");
+        }
+      );
   }
 
   moveFaceEmotionPage(){

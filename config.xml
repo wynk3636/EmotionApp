@@ -47,6 +47,15 @@
     </platform>
     <platform name="ios">
         <resource-file src="GoogleService-Info.plist" />
+        <edit-config file="*-Info.plist" mode="merge" target="GADIsAdManagerApp">
+            <true />
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="GADApplicationIdentifier">
+            <string>ca-app-pub-3818394711346045~3765548446</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+            <string>You can upload your offer/article picture using your camera</string>
+        </edit-config>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
