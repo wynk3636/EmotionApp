@@ -13,8 +13,8 @@ import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 import {Camera} from '@ionic-native/camera/ngx';
 import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 
-import { HelpModalComponent } from './common/component/help-modal/help-modal.component';
-import { FeedbackPopoverComponent } from './common/component/feedback-popover/feedback-popover.component';
+import { HelpModalComponent } from './presentation/component/help-modal/help-modal.component';
+import { FeedbackPopoverComponent } from './presentation/component/feedback-popover/feedback-popover.component';
 import { ClassifyDeviceComponent } from './common/function/classify-device/classify-device.component'
 import { SocialSharingComponent } from './common/function/social-sharing/social-sharing.component'
 import { FormsModule }   from '@angular/forms';

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Feedback } from '../../../domain/Entity/feedback';
+import { FeedbackService } from '../../../infrastructure/microservice/feedback.service';
 
 @Component({
   selector: 'app-feedback-popover',
@@ -8,7 +10,11 @@ import { PopoverController } from '@ionic/angular';
 })
 export class FeedbackPopoverComponent implements OnInit {
 
-  constructor(public popoverController: PopoverController) { }
+  constructor
+  (
+    public popoverController: PopoverController,
+    private feedbackService: FeedbackService,
+  ) { }
 
   evaluation:boolean
   feedbackText=""
@@ -34,33 +40,11 @@ export class FeedbackPopoverComponent implements OnInit {
   }
 
   async sendFeedback(){
-    const evaluationUrl = "https://w3p76muk55.execute-api.ap-northeast-1.amazonaws.com/default/registerEvaluation"
-    let feedback = this.makeFeedback()
-    //alert(feedback)
-    const response = await fetch(evaluationUrl, {
-        method: "POST",
-        body:feedback,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    let feedback = new Feedback(this.evaluation, this.feedbackText)
+    this.feedbackService = new FeedbackService(feedback)
+    this.feedbackService.sendFeedback()
 
-    var data = await response.json();
-    //alert(JSON.stringify(data, null, 2));
     this.dismissPopover()
-  }
-
-  makeFeedback(){
-    let documents = {
-      'documents': [
-          { 
-           'evaluation': this.evaluation,
-           'feedbackText': this.feedbackText 
-          }
-      ]
-    };
-
-    return JSON.stringify(documents);
   }
 
   ngOnInit() {}

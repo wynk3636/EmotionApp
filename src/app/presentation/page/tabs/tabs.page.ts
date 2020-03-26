@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FeedbackPopoverComponent } from '../../common/component/feedback-popover/feedback-popover.component';
+import { FeedbackPopoverComponent } from '../../component/feedback-popover/feedback-popover.component';
 import { PopoverController } from '@ionic/angular';
 
 @Component({

@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { HelpModalComponent } from '../../common/component/help-modal/help-modal.component';
+import { HelpModalComponent } from '../../component/help-modal/help-modal.component';
 import { Platform } from '@ionic/angular';
-import { ClassifyDeviceComponent } from '../../common/function/classify-device/classify-device.component';
-import { SocialSharingComponent } from '../../common/function/social-sharing/social-sharing.component'
+import { ClassifyDeviceComponent } from '../../../common/function/classify-device/classify-device.component';
+import { SocialSharingComponent } from '../../../common/function/social-sharing/social-sharing.component'
 
 import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 

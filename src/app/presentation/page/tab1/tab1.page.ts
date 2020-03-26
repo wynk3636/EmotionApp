@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
-import { ClassifyDeviceComponent } from '../../common/function/classify-device/classify-device.component';
+import { ClassifyDeviceComponent } from '../../../common/function/classify-device/classify-device.component';
 
 @Component({
   selector: 'app-tab1',
