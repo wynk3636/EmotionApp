@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
-import { ClassifyDeviceComponent } from '../classify-device/classify-device.component';
+import { ClassifyDeviceComponent } from '../../common/function/classify-device/classify-device.component';
 
 @Component({
   selector: 'app-tab1',
@@ -22,24 +22,16 @@ export class Tab1Page {
 
   }
 
-  id:string
-
+  private admobId:string
   ngOnInit() {
-    if(this.classifyDevice.isAndroid()){
-      this.id = 'ca-app-pub-3818394711346045/9686404636'
-    }
-    else if(this.classifyDevice.isIos()){
-      this.id = 'ca-app-pub-3818394711346045~3765548446';
-    }
-    
-    const bannerConfig: AdMobFreeBannerConfig = {
-      //id: this.id,
-      isTesting: true,
-      autoShow: true
-     };
-     this.admobFree.banner.config(bannerConfig);
-     
-     this.admobFree.banner.prepare()
+    this.setAdmobId()
+    this.setAdmobConf();
+
+    this.showAdmob();
+  }
+
+  private showAdmob() {
+    this.admobFree.banner.prepare()
       .then(() => {
         //alert("ok")
         // banner Ad is ready
@@ -50,6 +42,23 @@ export class Tab1Page {
           //alert("no");
         }
       );
+  }
+  private setAdmobConf() {
+     const bannerConfig: AdMobFreeBannerConfig = {
+      id: this.admobId,
+      isTesting: true,
+      autoShow: true
+     };
+     this.admobFree.banner.config(bannerConfig);
+  }
+
+  private setAdmobId() {
+    if(this.classifyDevice.isAndroid()){
+      this.admobId = 'ca-app-pub-3818394711346045/9686404636'
+    }
+    else if(this.classifyDevice.isIos()){
+      this.admobId = 'ca-app-pub-3818394711346045~3765548446';
+    }
   }
 
   moveFaceEmotionPage(){

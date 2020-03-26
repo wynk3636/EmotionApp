@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { FirebaseAnalytics } from '@ionic-native/firebase-analytics/ngx';
-import { ClassifyDeviceComponent } from './classify-device/classify-device.component';
+import { ClassifyDeviceComponent } from './common/function/classify-device/classify-device.component';
 
 @Component({
   selector: 'app-root',
