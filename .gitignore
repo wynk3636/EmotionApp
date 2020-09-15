@@ -29,3 +29,4 @@ npm-debug.log*
 /www
 /node_modules
 /plugins
+/.keystore
