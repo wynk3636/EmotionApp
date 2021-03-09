@@ -6,13 +6,15 @@ import { HelpModalComponent } from '../../component/help-modal/help-modal.compon
 import { ClassifyDeviceComponent } from '../../../common/function/classify-device/classify-device.component';
 import { SocialSharingComponent } from '../../../common/function/social-sharing/social-sharing.component'
 
+import {FaceProvider} from '../../../infrastructure/cognitive/face-provider';
+
 import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  providers: [ClassifyDeviceComponent,SocialSharingComponent]
+  providers: [ClassifyDeviceComponent,SocialSharingComponent,FaceProvider]
 })
 
 export class Tab2Page {
@@ -24,6 +26,7 @@ export class Tab2Page {
     private modalController: ModalController,
     private classifyDevice:ClassifyDeviceComponent,
     private share:SocialSharingComponent,
+    private faceProvider:FaceProvider,
   ) {}
 
   ngOnInit() {
@@ -119,28 +122,15 @@ export class Tab2Page {
     const file = evt.target.files[0];
     reader.onload = ((e) => {
       this.shootPhoto = e.target['result'];
-      this.PhotoBynary  = this.makeblob(this.shootPhoto);
+      this.PhotoBynary = this.makeblob(this.shootPhoto);
       this.callFaceAPI()
     });
     reader.readAsDataURL(file);
    }
 
-  async callFaceAPI(){
-    const subscriptionKey = '2e9d3a2d840c437bbc9a60ceabc62975';
-    const uriBase = "https://japaneast.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=false&returnFaceLandmarks=false&returnFaceAttributes=emotion";
-    console.log(this.PhotoBynary)
-    const response = await fetch(uriBase, {
-        method: "POST",
-        //body: '{"url": ' + '"' + imageUrl + '"}',
-        body:this.PhotoBynary,
-        headers: {
-            //'Content-Type': 'application/json',
-            'Content-Type': 'application/octet-stream',
-            "Ocp-Apim-Subscription-Key": subscriptionKey 
-        }
-    });
+   async callFaceAPI(){
+    var data = await this.faceProvider.fetchFaceAPI(this.PhotoBynary);
 
-    var data = await response.json();
     if(JSON.stringify(data) === "[]"){
       alert("Sorry. Can't analyze this photo")
     }
@@ -149,7 +139,7 @@ export class Tab2Page {
       this.barChartMethod(emotion);
       //this.addCanvas(data)
     }
-  };
+   }
 
   //encode
   makeblob = function (dataURL) {
