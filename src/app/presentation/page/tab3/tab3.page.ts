@@ -66,7 +66,7 @@ export class Tab3Page {
 
     const subscriptionKey = '52c07de179ae49059e755834cb444a86';
     //const uriBase = "https://japaneast.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment";
-    const uriBase = "https://japaneast.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment";
+    const uriBase = "https://japaneast.api.cognitive.microsoft.com/text/analytics/v3.1-preview.1/sentiment";
 
     let documents = {
       'documents': [
