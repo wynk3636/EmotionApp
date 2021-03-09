@@ -95,9 +95,9 @@ export class Tab3Page {
   pullEmotion(data):number[]{
     var emotion: number[] = Array(3);
 
-    emotion[0] = this.cutDown(data.documents[0].documentScores.positive)
-    emotion[1] = this.cutDown(data.documents[0].documentScores.negative)
-    emotion[2] = this.cutDown(data.documents[0].documentScores.neutral)
+    emotion[0] = this.cutDown(data.documents[0].confidenceScores.positive)
+    emotion[1] = this.cutDown(data.documents[0].confidenceScores.negative)
+    emotion[2] = this.cutDown(data.documents[0].confidenceScores.neutral)
 
     return emotion
   }
