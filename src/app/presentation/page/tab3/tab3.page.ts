@@ -5,7 +5,7 @@ import { Platform } from '@ionic/angular';
 import { ClassifyDeviceComponent } from '../../../common/function/classify-device/classify-device.component';
 import { SocialSharingComponent } from '../../../common/function/social-sharing/social-sharing.component'
 
-import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
+import {TextProvider} from '../../../infrastructure/cognitive/text-provider';
 
 import { Chart } from 'chart.js';
 
@@ -13,7 +13,7 @@ import { Chart } from 'chart.js';
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  providers: [ClassifyDeviceComponent,SocialSharingComponent]
+  providers: [ClassifyDeviceComponent,SocialSharingComponent,TextProvider]
 })
 export class Tab3Page {
 
@@ -22,7 +22,7 @@ export class Tab3Page {
     public platform: Platform,
     private classifyDevice:ClassifyDeviceComponent,
     private share:SocialSharingComponent,
-    private speechRecognition: SpeechRecognition,
+    private textProvider:TextProvider,
   ) {}
 
   ngOnInit() {
@@ -34,11 +34,6 @@ export class Tab3Page {
 
   wordInput:string
   wordOutput:string
-  /*
-  positiveScore:number
-  negativeScore:number
-  neutralScore:number
-  */
 
   async presentHelpModal() {
     console.log("helpModal");
@@ -64,29 +59,8 @@ export class Tab3Page {
       return
     }
 
-    const subscriptionKey = '52c07de179ae49059e755834cb444a86';
-    //const uriBase = "https://japaneast.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment";
-    const uriBase = "https://japaneast.api.cognitive.microsoft.com/text/analytics/v3.1-preview.1/sentiment";
+    var data = await this.textProvider.fetchTextAnalytics(this.wordInput);
 
-    let documents = {
-      'documents': [
-          { 'id': '1', 'text': this.wordInput }
-      ]
-    };
-
-    let bodyMessage = JSON.stringify(documents);
-    //alert(bodyMessage)
-
-    const response = await fetch(uriBase, {
-        method: "POST",
-        body:bodyMessage,
-        headers: {
-            'Content-Type': 'application/json', 
-            "Ocp-Apim-Subscription-Key": subscriptionKey
-        }
-    });
-
-    var data = await response.json();
     this.setScore(data)
     var emotion: number[] = this.pullEmotion(data)
     this.barChartMethod(emotion)
@@ -104,9 +78,6 @@ export class Tab3Page {
   
   async setScore(data){
     this.wordOutput = data.documents[0].sentiment;
-    //this.positiveScore = this.cutDown(data.documents[0].documentScores.positive)
-    //this.negativeScore = this.cutDown(data.documents[0].documentScores.negative)
-    //this.neutralScore = this.cutDown(data.documents[0].documentScores.neutral)
   }
 
   @ViewChild('barCanvas', {static: false}) barCanvas;
